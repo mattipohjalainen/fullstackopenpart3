@@ -44,12 +44,12 @@ let persons = [
     res.send(info)
   })
   
-  app.get('/persons', (req, res) => {
+  app.get('/api/persons', (req, res) => {
     console.log("persons: ",persons)
     res.json(persons)
   })
 
-  app.get('/persons/:id', (request, response) => {
+  app.get('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     console.log(id)
     const person = persons.find(person => person.id === id)
@@ -63,7 +63,7 @@ let persons = [
     }
   })
 
-  app.delete('/persons/:id', (request, response) => {
+  app.delete('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     console.log("delete ", id)
     const exists = persons.map(per => per.id).includes(id)
@@ -85,7 +85,7 @@ let persons = [
     return Math.floor(Math.random() * Math.floor(100));
   }
   
-  app.post('/persons', (request, response) => {
+  app.post('/api/persons', (request, response) => {
     const body = request.body
   
    if (body.name === undefined) {
